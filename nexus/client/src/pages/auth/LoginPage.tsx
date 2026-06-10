@@ -60,12 +60,19 @@ export default function LoginPage() {
       {/* Form */}
       <div className="flex-1 flex flex-col items-center justify-center p-8">
         <motion.div variants={fadeInUp} initial="hidden" animate="visible" className="w-full max-w-sm">
-          <Link to="/" className="flex items-center gap-2.5 mb-8">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-nexus-500 to-purple-600 shadow-lg shadow-nexus-500/30">
-              <Zap className="h-4 w-4 text-white" fill="currentColor" />
-            </div>
-            <span className="text-xl font-bold font-[Syne]">{APP_NAME}</span>
-          </Link>
+        <Link to="/" className="flex items-center gap-2.5 mb-8">
+
+  <img
+    src="/no-logo.png"
+    alt="logo"
+    className="h-9 w-9 rounded-xl object-cover border border-white/10 shadow-lg shadow-nexus-500/30"
+  />
+
+  <span className="text-xl font-bold font-[Syne]">
+    {APP_NAME}
+  </span>
+
+</Link>
 
           <div className="mb-8">
             <h1 className="text-2xl font-bold mb-1.5">Welcome back</h1>

@@ -76,29 +76,46 @@ export default function SignupPage() {
     <div className="min-h-screen flex">
       {/* Left - visuals */}
       <div className="hidden lg:flex flex-1 flex-col justify-center bg-gradient-to-br from-nexus-950 via-background to-background p-12 relative overflow-hidden">
-        <div className="absolute inset-0 bg-mesh" />
-        <div className="absolute top-1/3 right-1/4 h-72 w-72 rounded-full bg-nexus-500/10 blur-3xl animate-blob" />
-        <div className="relative z-10 max-w-sm">
-          <Link to="/" className="flex items-center gap-2.5 mb-12">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-nexus-500 to-purple-600">
-              <Zap className="h-4 w-4 text-white" fill="currentColor" />
-            </div>
-            <span className="text-xl font-bold font-[Syne]">{APP_NAME}</span>
-          </Link>
-          <h2 className="text-3xl font-bold mb-3">Join 50,000+ teams building the future</h2>
-          <p className="text-muted-foreground mb-8">Everything you need to build, scale, and grow — in one platform.</p>
-          <ul className="space-y-3">
-            {PERKS.map((perk) => (
-              <li key={perk} className="flex items-center gap-3 text-sm">
-                <div className="flex h-5 w-5 items-center justify-center rounded-full bg-nexus-500/20 text-nexus-400">
-                  <Check className="h-3 w-3" />
-                </div>
-                {perk}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+  
+  <div className="absolute inset-0 bg-mesh" />
+  <div className="absolute top-1/3 right-1/4 h-72 w-72 rounded-full bg-nexus-500/10 blur-3xl animate-blob" />
+
+  <div className="relative z-10 max-w-sm">
+
+    {/* LOGO SECTION (UPDATED) */}
+    <Link to="/" className="flex items-center gap-2.5 mb-12">
+      <img
+        src="/no-logo.png"
+        alt="logo"
+        className="h-9 w-9 rounded-xl border border-white/10 object-cover shadow-md"
+      />
+
+      <span className="text-xl font-bold font-[Syne]">
+        {APP_NAME}
+      </span>
+    </Link>
+
+    <h2 className="text-3xl font-bold mb-3">
+      Join 50,000+ teams building the future
+    </h2>
+
+    <p className="text-muted-foreground mb-8">
+      Everything you need to build, scale, and grow — in one platform.
+    </p>
+
+    <ul className="space-y-3">
+      {PERKS.map((perk) => (
+        <li key={perk} className="flex items-center gap-3 text-sm">
+          <div className="flex h-5 w-5 items-center justify-center rounded-full bg-nexus-500/20 text-nexus-400">
+            <Check className="h-3 w-3" />
+          </div>
+          {perk}
+        </li>
+      ))}
+    </ul>
+
+  </div>
+</div>
 
       {/* Right - form */}
       <div className="flex-1 flex flex-col items-center justify-center p-8">

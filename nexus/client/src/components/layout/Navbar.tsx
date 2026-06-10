@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Zap, ChevronDown } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useAuthStore } from '@/store/auth.store'
 import { NAV_LINKS, APP_NAME } from '@/constants'
 import { cn } from '@/lib/utils'
 
 export function Navbar() {
-  const [scrolled, setScrolled]   = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const { isAuthenticated } = useAuthStore()
   const navigate = useNavigate()
@@ -23,7 +23,7 @@ export function Navbar() {
     <motion.header
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.6 }}
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
         scrolled
@@ -32,12 +32,18 @@ export function Navbar() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2.5 group">
-          <div className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-nexus-500 to-purple-600 shadow-lg shadow-nexus-500/30 group-hover:shadow-nexus-500/50 transition-shadow">
-            <Zap className="h-4 w-4 text-white" fill="currentColor" />
-          </div>
-          <span className="text-lg font-bold font-[Syne]">{APP_NAME}</span>
+
+        {/* LOGO */}
+        <Link to="/" className="flex items-center gap-2 group">
+          <img
+            src="/no-logo.png"
+            alt="logo"
+            className="h-8 w-8 rounded-lg object-cover border border-white/10 shadow-md"
+          />
+
+          <span className="text-lg font-bold font-[Syne]">
+            {APP_NAME}
+          </span>
         </Link>
 
         {/* Desktop nav */}
@@ -73,7 +79,7 @@ export function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden flex items-center justify-center h-9 w-9 rounded-lg hover:bg-white/5 transition-colors"
+          className="md:hidden flex items-center justify-center h-9 w-9 rounded-lg hover:bg-white/5"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -91,17 +97,20 @@ export function Navbar() {
             className="md:hidden overflow-hidden border-t border-white/5 bg-background/95 backdrop-blur-2xl"
           >
             <div className="p-4 space-y-2">
+
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="flex items-center px-4 py-3 text-sm text-muted-foreground hover:text-foreground rounded-xl hover:bg-white/5 transition-colors"
+                  className="flex items-center px-4 py-3 text-sm text-muted-foreground hover:text-foreground rounded-xl hover:bg-white/5"
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}
                 </a>
               ))}
+
               <div className="pt-3 flex flex-col gap-2 border-t border-white/5">
+
                 {isAuthenticated ? (
                   <Button onClick={() => navigate('/dashboard')} variant="glow" className="w-full">
                     Dashboard
@@ -116,6 +125,7 @@ export function Navbar() {
                     </Button>
                   </>
                 )}
+
               </div>
             </div>
           </motion.div>
